@@ -9,21 +9,25 @@
 #import "CalculatorViewController.h"
 
 @interface CalculatorViewController ()
-
+@property (weak, nonatomic) IBOutlet UILabel *display;
+@property (nonatomic) BOOL userIsInTheMiddleEnterAnNumber;
 @end
 
 @implementation CalculatorViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+- (IBAction)digitPress:(UIButton *)sender {
+    NSString *digit = [sender currentTitle];
+    NSLog(@"User touched %@", digit);
+    if (self.userIsInTheMiddleEnterAnNumber) {
+        self.display.text = [self.display.text stringByAppendingString:digit];
+    } else {
+        self.display.text = digit;
+        self.userIsInTheMiddleEnterAnNumber = YES;
+    }
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
 
 @end
