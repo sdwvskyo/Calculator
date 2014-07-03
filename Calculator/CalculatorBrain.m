@@ -28,7 +28,11 @@
 }
 
 - (double)popOperand {
-    return [[self.operandStack lastObject]doubleValue];
+    NSNumber *operanObject = [self.operandStack lastObject];
+    if (operanObject) {
+        [self.operandStack removeLastObject];
+    }
+    return [operanObject doubleValue];
 }
 
 - (double)performOperation:(NSString *)operation {

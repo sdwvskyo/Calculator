@@ -31,12 +31,11 @@
         self.display.text = digit;
         self.userIsInTheMiddleEnterAnNumber = YES;
     }
-    
 }
 
 - (IBAction)operationPressed:(UIButton *)sender {
     if (self.userIsInTheMiddleEnterAnNumber) {
-        self.userIsInTheMiddleEnterAnNumber = NO;
+        [self enterPressed];
     }
     NSString *operation = [sender currentTitle];
     double result = [self.brain performOperation:operation];
